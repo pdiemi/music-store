@@ -1,8 +1,11 @@
 package com.example.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,4 +33,7 @@ public class Customer extends User{
 	private String customerZipcode;
 	@Column(name = "user_status")
 	private String customerStatus;
+	
+	@OneToMany(mappedBy = "customer")
+	private List<Orders> orders;
 }
