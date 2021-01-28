@@ -26,7 +26,7 @@ public class ProductService {
 		return productDao.findAllByProductCategory(productCategory);
 	}
 	
-	public Product addproduct(Product product) {
+	public Product addProduct(Product product) {
 		return productDao.save(product);
 	}
 	

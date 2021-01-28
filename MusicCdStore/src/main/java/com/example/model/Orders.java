@@ -32,6 +32,8 @@ public class Orders {
 	private double taxRate;
 	@Column(name = "shipping_rate")
 	private double shippingRate;
+	@Column(name = "order_status")
+	private String orderStatus;
 	
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
