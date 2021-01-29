@@ -5,37 +5,37 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.dao.ProductDao;
 import com.example.model.Product;
+import com.example.repository.ProductRepository;
 
 @Service
 public class ProductService {
 
 	@Autowired
-	private ProductDao productDao;
+	private ProductRepository productRepository;
 	
 	public List<Product> getAllProducts(){
-		return productDao.findAll();
+		return productRepository.findAll();
 	}
 	
 	public Product getProductById(long productId) {
-		return productDao.findById(productId).get();
+		return productRepository.findById(productId).get();
 	}
 	
 	public List<Product> getProductByCategory(String productCategory){
-		return productDao.findAllByProductCategory(productCategory);
+		return productRepository.findAllByProductCategory(productCategory);
 	}
 	
 	public Product addProduct(Product product) {
-		return productDao.save(product);
+		return productRepository.save(product);
 	}
 	
 	public Product updateProduct(Product product) {
-		productDao.delete(product);
-		return productDao.save(product);
+		productRepository.delete(product);
+		return productRepository.save(product);
 	}
 	
 	public void deleteProduct(Product product) {
-		productDao.delete(product);
+		productRepository.delete(product);
 	}
 }

@@ -6,42 +6,42 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.dao.OrdersDao;
 import com.example.model.Customer;
 import com.example.model.Orders;
+import com.example.repository.OrdersRepository;
 
 @Service
 public class OrderService {
 
 	@Autowired
-	private OrdersDao ordersDao;
+	private OrdersRepository ordersRepository;
 	
 	public List<Orders> getAllOrders(){
-		return ordersDao.findAll();
+		return ordersRepository.findAll();
 	}
 	
 	public Orders getOrderById(Long orderNumber) {
-		return ordersDao.findById(orderNumber).get();
+		return ordersRepository.findById(orderNumber).get();
 	}
 	
 	public List<Orders> getOrdersByCustomer(Customer customer){
-		return ordersDao.findAllByCustomer(customer);
+		return ordersRepository.findAllByCustomer(customer);
 	}
 	
 	public List<Orders> getOrdersByDate(Date orderDate){
-		return ordersDao.findAllByOrderDate(orderDate);
+		return ordersRepository.findAllByOrderDate(orderDate);
 	}
 	
 	public Orders addOrder(Orders order) {
-		return ordersDao.save(order);
+		return ordersRepository.save(order);
 	}
 	
 	public Orders updateOrder(Orders order) {
-		ordersDao.delete(order);
-		return ordersDao.save(order);
+		ordersRepository.delete(order);
+		return ordersRepository.save(order);
 	}
 	
 	public void deleteOrder(Orders order) {
-		ordersDao.delete(order);
+		ordersRepository.delete(order);
 	}
 }

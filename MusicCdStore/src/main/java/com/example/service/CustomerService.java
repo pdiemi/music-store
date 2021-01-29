@@ -5,41 +5,41 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.dao.CustomerDao;
 import com.example.model.Customer;
+import com.example.repository.CustomerRepository;
 
 @Service
 public class CustomerService {
 
 	@Autowired
-	private CustomerDao customerDao;
-	
+	private CustomerRepository customerRepository;
+
 	public List<Customer> getAllCustomer() {
-		return customerDao.findAll();
+		return customerRepository.findAll();
 	}
-	
+
 	public Customer getCustomerById(Long customerId) {
-		return customerDao.findById(customerId).get();
+		return customerRepository.findById(customerId).get();
 	}
-	
+
 	public Customer getCustomerByUsername(String username) {
-		return customerDao.findByUsername(username);
+		return customerRepository.findByUsername(username);
 	}
-	
+
 	public Customer getCustomerByEmail(String email) {
-		return customerDao.findByUserEmail(email);
+		return customerRepository.findByUserEmail(email);
 	}
-	
+
 	public Customer addCustomer(Customer customer) {
-		return customerDao.save(customer);
+		return customerRepository.save(customer);
 	}
-	
+
 	public Customer updateCustomer(Customer customer) {
-		customerDao.delete(customer);
-		return customerDao.save(customer);
+		customerRepository.delete(customer);
+		return customerRepository.save(customer);
 	}
-	
+
 	public void deleteCustomer(Customer customer) {
-		customerDao.delete(customer);
+		customerRepository.delete(customer);
 	}
 }

@@ -5,44 +5,44 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.dao.OrderDetailDao;
 import com.example.model.OrderDetail;
 import com.example.model.OrderDetailId;
 import com.example.model.Orders;
 import com.example.model.Product;
+import com.example.repository.OrderDetailRepository;
 
 @Service
 public class OrderDetailService {
 
 	@Autowired
-	private OrderDetailDao orderDetailDao;
+	private OrderDetailRepository orderDetailRepository;
 	
 	public List<OrderDetail> getAllOrderDetails(){
-		return orderDetailDao.findAll();
+		return orderDetailRepository.findAll();
 	}
 	
 	public OrderDetail getOrderDetailById(OrderDetailId id) {
-		return orderDetailDao.findById(id).get();
+		return orderDetailRepository.findById(id).get();
 	}
 	
 	public List<OrderDetail> getOrderDetailByOrder(Orders order) {
-		return orderDetailDao.findAllByOrder(order);
+		return orderDetailRepository.findAllByOrder(order);
 	}
 	
 	public List<OrderDetail> getOrderDetailByProduct(Product product) {
-		return orderDetailDao.findAllByProduct(product);
+		return orderDetailRepository.findAllByProduct(product);
 	}
 	
 	public OrderDetail addOrderDetail(OrderDetail orderDetail) {
-		return orderDetailDao.save(orderDetail);
+		return orderDetailRepository.save(orderDetail);
 	}
 	
 	public OrderDetail updateOrderDetail(OrderDetail orderDetail) {
-		orderDetailDao.delete(orderDetail);
-		return orderDetailDao.save(orderDetail);
+		orderDetailRepository.delete(orderDetail);
+		return orderDetailRepository.save(orderDetail);
 	}
 	
 	public void deleteOrderDetail(OrderDetail orderDetail) {
-		orderDetailDao.delete(orderDetail);
+		orderDetailRepository.delete(orderDetail);
 	}
 }

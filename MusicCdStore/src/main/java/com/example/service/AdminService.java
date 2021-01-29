@@ -5,37 +5,38 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.dao.AdminDao;
 import com.example.model.Admin;
+import com.example.repository.AdminRepository;
 
 @Service
 public class AdminService {
 
 	@Autowired
-	private AdminDao adminDao;
+	private AdminRepository adminRepository;
 
 	public List<Admin> getAllAdmin() {
-		return adminDao.findAll();
+		return adminRepository.findAll();
 	}
 	
 	public Admin getAdminById(long id) {
-		return adminDao.findById(id).get();
+		return adminRepository.findById(id).get();
 	}
 	
-	public Admin getAdminByUsername(String username) {
-		return adminDao.findByUsername(username);
-	}
+	/*
+	 * public Admin getAdminByUsername(String username) { return
+	 * adminRepository.findByUsername(username); }
+	 */
 	
 	public Admin addAdmin(Admin admin) {
-		return adminDao.save(admin);
+		return adminRepository.save(admin);
 	}
 	
 	public Admin updateAdmin(Admin admin) {
-		adminDao.delete(admin);
-		return adminDao.save(admin);
+		adminRepository.delete(admin);
+		return adminRepository.save(admin);
 	}
 	
 	public void deleteAdmin(Admin admin) {
-		adminDao.delete(admin);
+		adminRepository.delete(admin);
 	}
 }

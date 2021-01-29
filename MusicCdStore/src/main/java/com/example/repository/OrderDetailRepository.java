@@ -1,4 +1,4 @@
-package com.example.dao;
+package com.example.repository;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import com.example.model.OrderDetailId;
 import com.example.model.Orders;
 import com.example.model.Product;
 
-public interface OrderDetailDao extends JpaRepository<OrderDetail,OrderDetailId> {
+public interface OrderDetailRepository extends JpaRepository<OrderDetail,OrderDetailId> {
 	public List<OrderDetail> findAllByOrder(@Param("order") Orders order);
 	public List<OrderDetail> findAllByProduct(@Param("product") Product product);
 }
