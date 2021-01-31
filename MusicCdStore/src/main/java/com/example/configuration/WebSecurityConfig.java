@@ -16,11 +16,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
-	 @Bean(name="passwordEncoder")
-	    public PasswordEncoder passwordencoder(){
-	     return new BCryptPasswordEncoder();
-	    }
-
+	@Bean(name="passwordEncoder") public PasswordEncoder passwordencoder(){
+	return new BCryptPasswordEncoder(); }
+	 
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception 
 	{
@@ -32,9 +31,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception 
 	{
 		 http.authorizeRequests()
-		  //.antMatchers("/admin/*").access("hasRole('admin')")
-		 .antMatchers("/admin/*").hasRole("admin")
-		  .antMatchers("/user/*").access("hasRole('customer')")
+		  .antMatchers("/admin/*").access("hasRole('admin')")
+		  .antMatchers("/user/*").access("hasAnyRole('customer','admin')")
 		  .anyRequest().permitAll()
 		  .and()
 		    .formLogin().loginPage("/login")

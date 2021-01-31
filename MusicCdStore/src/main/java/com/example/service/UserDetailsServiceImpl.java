@@ -13,10 +13,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.model.Admin;
 import com.example.model.Role;
 import com.example.model.User;
-import com.example.repository.AdminRepository;
 import com.example.repository.UserRepository;
 
 @Service
@@ -41,5 +39,6 @@ public class UserDetailsServiceImpl implements UserDetailsService
 			
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
 	}
-
+	
+	
 }

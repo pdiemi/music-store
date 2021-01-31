@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.model.Customer;
+import com.example.model.Role;
 import com.example.repository.CustomerRepository;
 
 @Service
-public class CustomerService {
+public class CustomerService extends UserService {
 
 	@Autowired
 	private CustomerRepository customerRepository;
@@ -31,15 +32,27 @@ public class CustomerService {
 	}
 
 	public Customer addCustomer(Customer customer) {
+		String hashedPassword = encodePassword(customer.getPassword());
+		customer.setPassword(hashedPassword);
 		return customerRepository.save(customer);
 	}
 
 	public Customer updateCustomer(Customer customer) {
 		customerRepository.delete(customer);
+		String hashedPassword = encodePassword(customer.getPassword());
+		customer.setPassword(hashedPassword);
 		return customerRepository.save(customer);
 	}
 
 	public void deleteCustomer(Customer customer) {
 		customerRepository.delete(customer);
+	}
+
+	public List<String> getAllRegisteredEmail() {
+		return customerRepository.findAllUserEmail();
+	}
+
+	public List<String> getAllRegisteredUsername() {
+		return customerRepository.findAllUsername();
 	}
 }

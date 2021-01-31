@@ -1,5 +1,6 @@
 package com.example.model;
 
+import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,7 +14,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @DiscriminatorValue("customer")
 public class Customer extends User{
@@ -36,4 +36,10 @@ public class Customer extends User{
 	
 	@OneToMany(mappedBy = "customer")
 	private List<Orders> orders;
+	
+	public Customer() {
+		super();
+		roles = new HashSet<>();
+		roles.add(new Role(2,"customer"));
+	}
 }

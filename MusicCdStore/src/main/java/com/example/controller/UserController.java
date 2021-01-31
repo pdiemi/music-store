@@ -1,8 +1,11 @@
 package com.example.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.model.Customer;
 import com.example.model.Role;
+import com.example.service.AdminService;
 import com.example.service.CustomerService;
 
 @Controller
@@ -19,6 +23,8 @@ public class UserController{
 
 	@Autowired
 	private CustomerService customerService;
+	@Autowired
+	private AdminService adminService;
 	
 	@RequestMapping("/login")
 	public String login() 
@@ -39,8 +45,14 @@ public class UserController{
 		Customer customer = new Customer();
 		ModelAndView mv = new ModelAndView("user-form");
 		String userChanged = "none";
+		List<String> registeredEmail = customerService.getAllRegisteredEmail();
+		registeredEmail.addAll(adminService.getAllRegisteredEmail());
+		List<String> registeredUsername = customerService.getAllRegisteredUsername();
+		registeredUsername.addAll(adminService.getAllRegisteredUsername());
 		mv.addObject("userChanged", userChanged);
 		mv.addObject("customer", customer);
+		mv.addObject("registeredEmail", registeredEmail);
+		mv.addObject("registeredUsername", registeredUsername);
 		return mv;
 	}
 

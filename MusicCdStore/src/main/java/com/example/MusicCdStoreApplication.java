@@ -10,13 +10,14 @@ public class MusicCdStoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MusicCdStoreApplication.class, args);
 		
-		String password = "admin";
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		String hashedPassword = passwordEncoder.encode(password);
-		System.out.println("===========================================");
-		System.out.println(hashedPassword);
-		System.out.println("===========================================");
-		
+		/*
+		 * String password = "admin"; BCryptPasswordEncoder passwordEncoder = new
+		 * BCryptPasswordEncoder(); String hashedPassword =
+		 * passwordEncoder.encode(password);
+		 * System.out.println("===========================================");
+		 * System.out.println(hashedPassword);
+		 * System.out.println("===========================================");
+		 */
 	}
 
 }
