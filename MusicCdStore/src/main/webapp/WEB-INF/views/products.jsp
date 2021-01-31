@@ -20,7 +20,7 @@
                     <li class="nav-item">
                         <form class="form-inline" action="#">
                             <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                            <button class="btn btn-success" type="submit">Search</button>
+                            <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </li>
                 </ul>
@@ -57,14 +57,23 @@
             </div>
             <span class="border border-left-0 border-right-0 border-bottom-0">
                 <div class="card-footer" style="border:transparent; background:transparent;">
-                
-                    <ul class="pagination justify-content-end">
+                    <nav class="navbar navbar-sm">
+                <ul class="navbar-nav">
+                <li class="nav-item"> Showing 1 to 1 of ${productList.size()} entries</li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <ul class="pagination justify-content-end">
                         <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
                         <li class="page-item"><a class="page-link" href="#">2</a></li>
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item"><a class="page-link" href="#">Next</a></li>
                     </ul>
+                    </li>
+                </ul>
+                </nav>
+                    
                     
                 </div>
             </span>

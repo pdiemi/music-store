@@ -5,8 +5,9 @@
 
 <div class="container-fluid">
     <footer>
-        <p>&copy My Music's Store <a href="#"> Privacy</a> <a href="#"> Terms</a></p>
+        <p>&copy <script>document.write(new Date().getFullYear())</script> My Music's Store <a href="#"> Privacy</a> <a href="#"> Terms</a></p>
     </footer>
 </div>
+<script src="my-js.js"></script>
 </body>
 </html>
