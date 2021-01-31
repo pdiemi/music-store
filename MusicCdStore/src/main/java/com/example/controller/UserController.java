@@ -15,8 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.model.Customer;
 import com.example.model.Role;
+import com.example.model.User;
 import com.example.service.AdminService;
 import com.example.service.CustomerService;
+import com.example.service.UserService;
 
 @Controller
 public class UserController{
@@ -26,10 +28,16 @@ public class UserController{
 	@Autowired
 	private AdminService adminService;
 	
-	@RequestMapping("/login")
+	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login() 
 	{
 		return "login";		
+	}
+	
+	@RequestMapping(value="/login/{username}", method=RequestMethod.POST)
+	public String login(@PathVariable String username) 
+	{
+		return "redirect:/index/user="+username;		
 	}
 
 	@GetMapping("/admin/customers/all")
@@ -71,6 +79,7 @@ public class UserController{
 		ModelAndView mv = new ModelAndView("customer-dashboard");
 		String userChanged = "added";
 		mv.addObject("userChanged", userChanged);
+		mv.addObject("customer", customer);
 		return mv;
 	}
 

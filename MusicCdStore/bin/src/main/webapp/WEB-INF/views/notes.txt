@@ -1,0 +1,14 @@
+ <style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+  #popular-cards {
+    margin: 30px;
+  }
+  .card {
+    margin: 20px;
+  }
+  
+  </style>

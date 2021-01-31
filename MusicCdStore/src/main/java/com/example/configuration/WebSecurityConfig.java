@@ -9,6 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+
+import com.example.security.CustomLogoutSuccessHandler;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -37,12 +40,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		  .and()
 		    .formLogin().loginPage("/login")
 		    .usernameParameter("username").passwordParameter("password")
+		    .defaultSuccessUrl("/index2", true)
 		  .and()
 		    .logout().logoutSuccessUrl("/") 
+            .logoutSuccessHandler(logoutSuccessHandler())
 		   .and()
 		   .exceptionHandling().accessDeniedPage("/403")
 		  .and()
 		    .csrf();
 	}
+	
+	@Bean
+    public LogoutSuccessHandler logoutSuccessHandler() {
+        return new CustomLogoutSuccessHandler();
+    }
+
 
 }

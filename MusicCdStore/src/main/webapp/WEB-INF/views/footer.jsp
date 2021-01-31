@@ -3,11 +3,11 @@
     <p style="text-align:right"><a href="#">Back to top</a></p>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid border border-bottom-0 border-left-0 border-right-0">
     <footer>
         <p>&copy <script>document.write(new Date().getFullYear())</script> My Music's Store <a href="#"> Privacy</a> <a href="#"> Terms</a></p>
     </footer>
 </div>
-<script src="my-js.js"></script>
+<script src="/js/user.js"></script>
 </body>
 </html>

@@ -41,5 +41,6 @@ public class Customer extends User{
 		super();
 		roles = new HashSet<>();
 		roles.add(new Role(2,"customer"));
+		customerStatus="active";
 	}
 }
