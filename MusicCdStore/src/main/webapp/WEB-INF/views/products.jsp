@@ -11,7 +11,7 @@
                 <ul class="navbar-nav">
                 <li class="nav-item"> Show
                 <select>
-                    <option id="one" name="entry-number">1</option>
+                    <option id="one" name="entry-number">10</option>
                     <option id="two" name="entry-number">2</option>
                     <option id="three" name="entry-number">3</option>
                 </select>
@@ -71,7 +71,7 @@
                 <div class="card-footer" style="border:transparent; background:transparent;">
                     <nav class="navbar navbar-sm">
                 <ul class="navbar-nav">
-                <li class="nav-item"> Showing 1 to 1 of ${productList.size()} entries</li>
+                <li class="nav-item"> Showing 1 to ${productList.size()} of ${productList.size()} entries</li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
