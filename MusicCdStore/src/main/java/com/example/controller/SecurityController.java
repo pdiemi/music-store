@@ -1,6 +1,8 @@
 package com.example.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.model.Admin;
 import com.example.model.Customer;
+import com.example.model.OrderDetail;
 import com.example.model.User;
 import com.example.service.AdminService;
 import com.example.service.CustomerService;
@@ -52,11 +55,20 @@ public class SecurityController {
         else {
         	Customer customer = customerService.getCustomerByUsername(currentUsername);
         	if (customer != null) {
-        		return new ModelAndView("index2", "user", customer);
+        		ModelAndView mv = new ModelAndView("index2");
+        		mv.addObject("user", customer);
+        		List<OrderDetail> cart = new ArrayList<>();
+        		mv.addObject("cart", cart);
+        		return mv;
         	}
         }
         return new ModelAndView("index2", "user", null);
     }
 	
+	@RequestMapping("/403")
+	public String accessDenied() 
+	{
+		return "403";		
+	}
 
 }

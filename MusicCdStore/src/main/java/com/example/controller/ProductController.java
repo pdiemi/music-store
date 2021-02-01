@@ -26,7 +26,7 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@RequestMapping(value = { "/products/all", "/products/all/{username}" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/products/all", "/products/all/user={username}" }, method = RequestMethod.GET)
 	public ModelAndView getAllProducts() {
 		List<Product> productList = productService.getAllProducts();
 		return new ModelAndView("products", "productList", productList);

@@ -28,10 +28,10 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/index/user={username}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Products</a>
+                <a class="nav-link" href="/products/all/user={username}">Products</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
@@ -39,7 +39,7 @@
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Welcome ${user.getCustomerName()}</a>
+                <a class="nav-link" href="/user/${user.getUserId()}">Welcome ${user.getCustomerName()}</a>
             </li>
             <li class="nav-item">
                 <form action="/logout" method="post" >
@@ -48,7 +48,7 @@
                 </form>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Cart</a>
+                <a class="nav-link" href="/user/${user.getUserId()}/cart">Cart</a>
             </li>
         </ul>
     </div>
