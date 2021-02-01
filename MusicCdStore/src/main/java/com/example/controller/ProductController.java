@@ -25,14 +25,17 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
-	@Autowired
-	private UserService userService;
 	
-
-	@RequestMapping(value = { "/products/all", "/products/all/user={username}" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/products/all", "/products/all/{username}" }, method = RequestMethod.GET)
 	public ModelAndView getAllProducts() {
 		List<Product> productList = productService.getAllProducts();
 		return new ModelAndView("products", "productList", productList);
+	}
+	
+	@RequestMapping(value = "/admin/products/all", method = RequestMethod.GET)
+	public ModelAndView getAllProductsForAdmin() {
+		List<Product> productList = productService.getAllProducts();
+		return new ModelAndView("admin-products", "productList", productList);
 	}
 
 	@GetMapping("/products/details/{productId}")
@@ -40,6 +43,13 @@ public class ProductController {
 		Product product = productService.getProductById(productId);
 		return new ModelAndView("product-detail", "product", product);
 	}
+	
+	@GetMapping("/admin/products/details/{productId}")
+	public ModelAndView getProductByIdforAdmin(@PathVariable long productId) {
+		Product product = productService.getProductById(productId);
+		return new ModelAndView("admin-product-detail", "product", product);
+	}
+
 
 	@GetMapping("/products/{category}")
 	public ModelAndView getProductsByCategory(@PathVariable String category) {
@@ -57,13 +67,15 @@ public class ProductController {
 		return mv;
 	}
 
+	/*
+	 * @PostMapping("/admin/products/add") public ModelAndView addProduct(Product
+	 * product) { productService.addProduct(product); ModelAndView mv = new
+	 * ModelAndView("product-form"); String itemChanged = "added";
+	 * mv.addObject("itemChanged", itemChanged); return mv; }
+	 */
 	@PostMapping("/admin/products/add")
-	public ModelAndView addProduct(Product product) {
-		productService.addProduct(product);
-		ModelAndView mv = new ModelAndView("product-form");
-		String itemChanged = "added";
-		mv.addObject("itemChanged", itemChanged);
-		return mv;
+	public String addProduct(Product product) {
+		return "redirect:/admin/products/all";
 	}
 
 	@GetMapping("/admin/products/update/{productId}")
@@ -76,13 +88,15 @@ public class ProductController {
 		return mv;
 	}
 
+	/*
+	 * @PostMapping("/admin/products/update/{productId}") public ModelAndView
+	 * updateProduct(Product product) { productService.updateProduct(product);
+	 * ModelAndView mv = new ModelAndView("admin-products"); String itemChanged =
+	 * "updated"; mv.addObject("itemChanged", itemChanged); return mv; }
+	 */
 	@PostMapping("/admin/products/update/{productId}")
-	public ModelAndView updateProduct(Product product) {
-		productService.updateProduct(product);
-		ModelAndView mv = new ModelAndView("admin-products");
-		String itemChanged = "updated";
-		mv.addObject("itemChanged", itemChanged);
-		return mv;
+	public String updateProduct(Product product) {
+		return "redirect:/admin/products/all";
 	}
 
 	@GetMapping("/admin/products/delete/{productId}")
@@ -95,12 +109,14 @@ public class ProductController {
 		return mv;
 	}
 
+	/*
+	 * @PostMapping("/admin/products/delete/{productId}") public ModelAndView
+	 * deleteProduct(Product product) { productService.deleteProduct(product);
+	 * ModelAndView mv = new ModelAndView("admin-products"); String itemChanged =
+	 * "deleted"; mv.addObject("itemChanged", itemChanged); return mv; }
+	 */
 	@PostMapping("/admin/products/delete/{productId}")
-	public ModelAndView deleteProduct(Product product) {
-		productService.deleteProduct(product);
-		ModelAndView mv = new ModelAndView("admin-products");
-		String itemChanged = "deleted";
-		mv.addObject("itemChanged", itemChanged);
-		return mv;
+	public String deleteProduct(Product product) {
+		return "redirect:/admin/products/all";
 	}
 }

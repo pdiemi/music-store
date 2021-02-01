@@ -39,7 +39,7 @@
         </ul>
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">Welcome ${user.getCustomerName()}</a>
+                <a class="nav-link" href="#">Welcome ${user.getUsername()}</a>
             </li>
             <li class="nav-item">
                 <form action="/logout" method="post" >
@@ -48,15 +48,10 @@
                 </form>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Cart</a>
+                <a class="nav-link" href="/index/user={username}">Admin</a>
             </li>
         </ul>
     </div>
   </nav>
-  
-  <script>
-  console.log("=========");
-    console.log("${user}");
-    
-  </script>
+ 
 

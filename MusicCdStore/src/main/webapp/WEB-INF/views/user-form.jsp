@@ -1,7 +1,7 @@
 <%@ include file="header-non-login.jsp" %>
 <br><br><br><br>
 <div class="container">
-    <h1>Register Customer</h1>
+    <h1>User Information</h1>
     <p>Please fill in your information below</p>
     <p style="color:red;">Fields marked with (*) are required</p>
     <br>

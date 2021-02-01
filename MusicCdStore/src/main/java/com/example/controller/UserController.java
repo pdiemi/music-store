@@ -28,18 +28,6 @@ public class UserController{
 	@Autowired
 	private AdminService adminService;
 	
-	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public String login() 
-	{
-		return "login";		
-	}
-	
-	@RequestMapping(value="/login/{username}", method=RequestMethod.POST)
-	public String login(@PathVariable String username) 
-	{
-		return "redirect:/index/user="+username;		
-	}
-
 	@GetMapping("/admin/customers/all")
 	public ModelAndView getAllCustomers() {
 		ModelAndView mv = new ModelAndView("customers");
@@ -93,14 +81,18 @@ public class UserController{
 		mv.addObject("customer", customer);
 		return mv;
 	}
-	
+
+	/*
+	 * @RequestMapping(value = "/admin/customers/update/{customerId}", method =
+	 * RequestMethod.POST) public ModelAndView updateCustomerByAdmin(Customer
+	 * customer) { customerService.updateCustomer(customer); ModelAndView mv = new
+	 * ModelAndView("customers"); String userChanged = "updated";
+	 * mv.addObject("userChanged", userChanged); return mv; }
+	 */
 	@RequestMapping(value = "/admin/customers/update/{customerId}", method = RequestMethod.POST)
-	public ModelAndView updateCustomerByAdmin(Customer customer) {
-		customerService.updateCustomer(customer);
-		ModelAndView mv = new ModelAndView("customers");
-		String userChanged = "updated";
-		mv.addObject("userChanged", userChanged);
-		return mv;
+	public String updateCustomerByAdmin(Customer customer) {
+		
+		return "redirect:/admin/customers/all";
 	}
 
 	@RequestMapping(value = "/user/{customerId}/update", method = RequestMethod.POST)

@@ -1,4 +1,4 @@
-<%@ include file="header-non-login.jsp" %>
+<%@ include file="header-post-login-admin.jsp" %>
 <br><br><br><br>
 <div class="container-fluid">
     <h1>Product Detail</h1>
@@ -18,20 +18,14 @@
             <p><strong>Condition:</strong> ${product.getProductCondition()}</p>
             <p><strong>Price:</strong> $${product.getProductPrice()}</p>
             <p><strong>Descriptions:</strong> ${product.getProductDescription()}</p>
-            <a href="/products/all" class="btn btn-outline-secondary" role="button">Back</a>
-            <a class="btn btn-warning" id="addToCartBtn"><i class="fas fa-cart-plus"></i> Add to cart</a>
-            
-            
+            <a href="/admin/products/all" class="btn btn-outline-secondary" role="button">Back</a>
+            <a href="/admin/products/update/${product.getProductId()}" class="btn btn-warning"><i class="fas fa-edit"></i> Modify</a>
             </div>
         </div>
     </div>
 
 </div>
 
-<script>
-    $("#addToCartBtn").on('click', function (event) {
-        alert("This product has been added to your cart!")
-    })
-</script>
+
 
 <%@ include file="footer.jsp" %>
