@@ -21,18 +21,26 @@ import com.example.service.CustomerService;
 import com.example.service.UserService;
 
 @Controller
-public class UserController{
+public class UserController {
 
 	@Autowired
 	private CustomerService customerService;
 	@Autowired
 	private AdminService adminService;
-	
+
 	@GetMapping("/admin/customers/all")
 	public ModelAndView getAllCustomers() {
 		ModelAndView mv = new ModelAndView("customers");
 		List<Customer> customerList = customerService.getAllCustomer();
 		mv.addObject("customerList", customerList);
+		return mv;
+	}
+
+	@GetMapping(value = { "/admin/customers/{customerId}", "/user/{customerId}" })
+	public ModelAndView getCustomerById(@PathVariable long customerId) {
+		ModelAndView mv = new ModelAndView("customer-profile");
+		Customer customer = customerService.getCustomerById(customerId);
+		mv.addObject("customer", customer);
 		return mv;
 	}
 
@@ -71,11 +79,20 @@ public class UserController{
 		return mv;
 	}
 
-	@RequestMapping(value = { "/admin/customers/update/{customerId}",
-			"/user/{customerId}/update" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/user/{customerId}/update", method = RequestMethod.GET)
 	public ModelAndView updateCustomer(@PathVariable("customerId") long customerId) {
 		Customer customer = customerService.getCustomerById(customerId);
-		ModelAndView mv = new ModelAndView("user-form");
+		ModelAndView mv = new ModelAndView("edit-user-form");
+		String userChanged = "none";
+		mv.addObject("userChanged", userChanged);
+		mv.addObject("customer", customer);
+		return mv;
+	}
+
+	@RequestMapping(value = "/admin/customers/update/{customerId}", method = RequestMethod.GET)
+	public ModelAndView updateCustomerForAdmin(@PathVariable("customerId") long customerId) {
+		Customer customer = customerService.getCustomerById(customerId);
+		ModelAndView mv = new ModelAndView("admin-user-form");
 		String userChanged = "none";
 		mv.addObject("userChanged", userChanged);
 		mv.addObject("customer", customer);
@@ -91,7 +108,7 @@ public class UserController{
 	 */
 	@RequestMapping(value = "/admin/customers/update/{customerId}", method = RequestMethod.POST)
 	public String updateCustomerByAdmin(Customer customer) {
-		
+
 		return "redirect:/admin/customers/all";
 	}
 

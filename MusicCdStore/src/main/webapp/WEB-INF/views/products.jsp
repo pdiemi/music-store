@@ -1,6 +1,7 @@
 <%@ include file="header-non-login.jsp" %>
 <br><br><br><br>
 <div class="container-fluid">
+
     <h1 id="header">All Products</h1>
     <p>Checkout all the awesome products available now!</p>
     <br>
@@ -48,7 +49,18 @@
                                     <td>${product.getProductCategory()}</td>
                                     <td>${product.getProductCondition()}</td>
                                     <td>$${product.getProductPrice()}</td>
-                                    <td><a href="./details/${product.getProductId()}">Details</a></td>
+                                    <td>
+                                        <a class="btn btn-primary" href="/products/details/${product.getProductId()}">Details</a>
+                                        <button class="btn btn-warning my-cart-btn" id="addToCartBtn"
+                                                data-id="${product.getProductId()}" 
+                                                data-name="${product.getProductName()}" 
+                                                data-summary="${product.getProductDescription()}" 
+                                                data-price="${product.getProductPrice()}" 
+                                                data-quantity="1" 
+                                                data-image="${product.getProductImage()}">
+                                                <i class="fas fa-cart-plus"></i> Add to Cart
+                                        </button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </c:forEach>

@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link href="/css/style.css"
         rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
 
@@ -48,7 +49,7 @@
                 </form>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/user/${user.getUserId()}/cart">Cart</a>
+                <a class="nav-link" href="#">Cart</a>
             </li>
         </ul>
     </div>

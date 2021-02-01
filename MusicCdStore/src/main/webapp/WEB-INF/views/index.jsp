@@ -10,21 +10,21 @@
       </ul>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="images/image.jpg" alt="image-1" width="1100" height="500">
+          <img src="/images/image.jpg" alt="image-1" width="1100" height="500">
           <div class="carousel-caption">
             <h3>Los Angeles</h3>
             <p>We had such a great time in LA!</p>
           </div>   
         </div>
         <div class="carousel-item">
-          <img src="images/image.jpg" alt="image-2" width="1100" height="500">
+          <img src="/images/image.jpg" alt="image-2" width="1100" height="500">
           <div class="carousel-caption">
             <h3>Chicago</h3>
             <p>Thank you, Chicago!</p>
           </div>   
         </div>
         <div class="carousel-item">
-          <img src="images/image.jpg" alt="image-3" width="1100" height="500">
+          <img src="/images/image.jpg" alt="image-3" width="1100" height="500">
           <div class="carousel-caption">
             <h3>New York</h3>
             <p>We love the Big Apple!</p>

@@ -19,8 +19,16 @@
             <p><strong>Price:</strong> $${product.getProductPrice()}</p>
             <p><strong>Descriptions:</strong> ${product.getProductDescription()}</p>
             <a href="/products/all" class="btn btn-outline-secondary" role="button">Back</a>
-            <a class="btn btn-warning" id="addToCartBtn"><i class="fas fa-cart-plus"></i> Add to cart</a>
             
+            <button class="btn btn-warning my-cart-btn" id="addToCartBtn"
+                    data-id="${product.getProductId()}" 
+                    data-name="${product.getProductName()}" 
+                    data-summary="${product.getProductDescription()}" 
+                    data-price="${product.getProductPrice()}" 
+                    data-quantity="1" 
+                    data-image="${product.getProductImage()}">
+                    <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
             
             </div>
         </div>

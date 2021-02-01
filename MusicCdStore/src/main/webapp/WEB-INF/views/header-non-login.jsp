@@ -16,6 +16,19 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link href="/css/style.css"
         rel="stylesheet">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <style>
+  .badge-notify{
+    background:red;
+    position:relative;
+    top: -20px;
+    right: 10px;
+  }
+  .my-cart-icon-affix {
+    position: fixed;
+    z-index: 999;
+  }
+  </style>
 </head>
 <body>
 
@@ -43,6 +56,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/register">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-shopping-cart my-cart-icon"><span class="badge badge-danger my-cart-badge"></span></i></a>
             </li>
         </ul>
     </div>

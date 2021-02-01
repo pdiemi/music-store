@@ -46,9 +46,10 @@ public class OrderController {
 		return mv;
 	}
 
-	@GetMapping("/user/{customerId}/cart")
-	public ModelAndView viewCart() {
-		
-	}
+	/*
+	 * @GetMapping("/user/{customerId}/cart") public ModelAndView viewCart(List) {
+	 * 
+	 * }
+	 */
 	
 }
